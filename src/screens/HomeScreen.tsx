@@ -1,10 +1,12 @@
-import { View, Text, TextInput, StyleSheet } from 'react-native';
+import { View, Text, TextInput, StyleSheet, ScrollView } from 'react-native';
 import React, { useEffect, useState } from 'react';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import ImageCarousel from '../components/ImageCarousel';
 import FoodTypes from '../components/FoodTypes';
 import FastDelivery from '../components/FastDelivery';
+import QuickFilter from '../components/QuickFilter';
+import RestaurantList from '../components/RestaurantList';
 
 const placeholders = [
   'Biryani',
@@ -26,26 +28,36 @@ const HomeScreen = () => {
   }, []);
   return (
     <SafeAreaView style={styles.container}>
-      {/* SearchBar */}
-      <View style={styles.searchbar}>
-        <TextInput
-          placeholder={`Search for '${placeholders[placeholderIndex]}'`}
-          placeholderTextColor={'grey'}
-          style={styles.textInput}
-        />
-        <Ionicons name="search" size={25} style={styles.searchIcon} />
-      </View>
+      <ScrollView contentContainerStyle={{paddingBottom:30}}>
+        {/* SearchBar */}
+        <View style={styles.searchbar}>
+          <TextInput
+            placeholder={`Search for '${placeholders[placeholderIndex]}'`}
+            placeholderTextColor={'grey'}
+            style={styles.textInput}
+          />
+          <Ionicons name="search" size={25} style={styles.searchIcon} />
+        </View>
 
-      {/* Image Carousel */}
-      <ImageCarousel />
+        {/* Image Carousel */}
+        <ImageCarousel />
 
-      {/* Fast delivery */}
-      <Text style={styles.fastDeliveryTitle}>Fast delivery</Text>
-      <FastDelivery />
+        {/* Fast delivery */}
+        <Text style={styles.fastDeliveryTitle}>Fast delivery</Text>
+        <FastDelivery />
 
-      {/* Food Types */}
-      <Text style={styles.foodTypeTitle}>What's on your mind?</Text>
-      <FoodTypes />
+        {/* Food Types */}
+        <Text style={styles.foodTypeTitle}>What's on your mind?</Text>
+        <FoodTypes />
+
+        {/* Filter section  */}
+        <QuickFilter />
+
+        {/* Restaurants to explore */}
+        <Text style={styles.foodTypeTitle}>Top 2036 restaurants to explore</Text>
+
+        <RestaurantList/>
+      </ScrollView>
     </SafeAreaView>
   );
 };

@@ -14,7 +14,7 @@ export const data = [
   {
     id: '2',
     image:
-      'https://res.cloudinary.com/do0sr9avm/image/upload/v1752604820/hik0fxihcahzti5govux.jpg',
+      'https://res.cloudinary.com/do0sr9avm/image/upload/v1752679378/v4vpure59pkentoorkfu.png',
     name: 'Cakes',
   },
   {
@@ -26,7 +26,7 @@ export const data = [
   {
     id: '4',
     image:
-      'https://res.cloudinary.com/do0sr9avm/image/upload/v1752604911/cwjhgpqphs33bmgv4ftt.jpg',
+      'https://res.cloudinary.com/do0sr9avm/image/upload/v1752679378/yekfitsam0zxnvciovtk.png',
     name: 'Ice-Cream',
   },
   {

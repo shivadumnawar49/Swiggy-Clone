@@ -5,9 +5,8 @@
  * @format
  */
 
-import { NewAppScreen } from '@react-native/new-app-screen';
 import { StatusBar, StyleSheet, useColorScheme, View } from 'react-native';
-import HomeScreen from './src/screens/HomeScreen';
+import StackNavigator from './src/navigation/StackNavigator';
 
 function App() {
   const isDarkMode = useColorScheme() === 'dark';
@@ -15,7 +14,7 @@ function App() {
   return (
     <View style={styles.container}>
       <StatusBar barStyle={isDarkMode ? 'light-content' : 'dark-content'} />
-      <HomeScreen/>
+      <StackNavigator />
     </View>
   );
 }
