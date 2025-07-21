@@ -2,7 +2,22 @@ import { View, Text, Image, StyleSheet } from 'react-native';
 import React from 'react';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 
-const MenuItem = () => {
+interface MenuItem {
+  item: {
+    id: string;
+    name: string;
+    price: number;
+    description: string;
+    rating: number;
+    ratings: number;
+    image: string;
+    veg: boolean;
+    bestSeller: boolean;
+    quantity: number;
+  };
+}
+
+const MenuItem = ({ item }: MenuItem) => {
   return (
     <View style={styles.container}>
       <Image
@@ -32,11 +47,24 @@ const MenuItem = () => {
           <View style={{ flexDirection: 'row', alignItems: 'center' }}>
             <Ionicons name="star" size={10} color={'green'} />
             <Text
-              style={{ color: 'green', fontWeight: 500, marginHorizontal: 3 }}
+              style={{
+                color: 'green',
+                fontFamily: 'Poppins-Medium',
+                includeFontPadding: false,
+                marginHorizontal: 3,
+              }}
             >
               4.3
             </Text>
-            <Text style={{ color: 'green', fontWeight: 500 }}>(41.4K+)</Text>
+            <Text
+              style={{
+                color: 'green',
+                fontFamily: 'Poppins-Medium',
+                includeFontPadding: false,
+              }}
+            >
+              (41.4K+)
+            </Text>
           </View>
         </View>
         <View
@@ -47,8 +75,16 @@ const MenuItem = () => {
           }}
         >
           <View style={{ flexDirection: 'row', alignItems: 'center' }}>
-            <Text style={{ fontSize: 12, fontWeight: 500 }}>₹</Text>
-            <Text style={{ fontSize: 16, fontWeight: 'bold' }}>242</Text>
+            <Text style={{ fontSize: 14, fontWeight: 500 }}>₹</Text>
+            <Text
+              style={{
+                fontSize: 16,
+                fontFamily: 'Poppins-SemiBold',
+                includeFontPadding: false,
+              }}
+            >
+              242
+            </Text>
           </View>
           <View
             style={{
@@ -57,13 +93,18 @@ const MenuItem = () => {
               width: '45%',
               alignItems: 'center',
               justifyContent: 'center',
-              borderRadius:8,
-              borderColor:'#333333',
-
-
+              borderRadius: 8,
+              borderColor: '#333333',
             }}
           >
-            <Text style={{ fontSize: 16, fontWeight: 'bold', color: 'green' }}>
+            <Text
+              style={{
+                fontSize: 16,
+                fontFamily: 'Poppins-SemiBold',
+                includeFontPadding: false,
+                color: 'green',
+              }}
+            >
               ADD
             </Text>
           </View>
@@ -74,9 +115,9 @@ const MenuItem = () => {
 };
 
 const styles = StyleSheet.create({
-    container: {
-        marginBottom:25,
-    },
+  container: {
+    marginBottom: 25,
+  },
   triangleIconContainer: {
     width: 14,
     height: 14,

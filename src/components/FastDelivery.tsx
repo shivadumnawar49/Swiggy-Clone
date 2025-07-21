@@ -9,7 +9,6 @@ import {
 import React, { useState } from 'react';
 import { data } from '../data/fastDelivery';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
-import Entypo from 'react-native-vector-icons/Entypo';
 import LinearGradient from 'react-native-linear-gradient';
 
 const FastDelivery = () => {
@@ -34,18 +33,32 @@ const FastDelivery = () => {
                 }}
               >
                 <Image source={{ uri: item.image }} style={styles.image} />
-                <Pressable
-                  onPress={() => setLikedItems(prev => ({
-                    ...prev, [item.id] : !prev[item.id],
-                  }))}
-                  style={styles.heartIconButton}
+
+                <LinearGradient
+                  colors={['rgba(0,0,0,0.8)', 'transparent']}
+                  style={{
+                    position: 'absolute',
+                    top: 0,
+                    height: '30%',
+                    width: '100%',
+                  }}
                 >
-                  <FontAwesome
-                    name={likedItems[item.id] ? 'heart' : 'heart-o'}
-                    color={likedItems[item.id] ? 'red' : '#fff'}
-                    size={18}
-                  />
-                </Pressable>
+                  <Pressable
+                    onPress={() =>
+                      setLikedItems(prev => ({
+                        ...prev,
+                        [item.id]: !prev[item.id],
+                      }))
+                    }
+                    style={styles.heartIconButton}
+                  >
+                    <FontAwesome
+                      name={likedItems[item.id] ? 'heart' : 'heart-o'}
+                      color={likedItems[item.id] ? 'red' : '#fff'}
+                      size={18}
+                    />
+                  </Pressable>
+                </LinearGradient>
                 <LinearGradient
                   colors={['transparent', 'rgba(0,0,0,0.9)']}
                   style={styles.gradient}
@@ -58,7 +71,8 @@ const FastDelivery = () => {
                       left: '10%',
                       color: '#fff',
                       fontSize: 18,
-                      fontWeight: 'bold',
+                      fontFamily: 'Poppins-SemiBold',
+                      includeFontPadding: false,
                     }}
                   >
                     {item.offer} OFF
@@ -73,7 +87,8 @@ const FastDelivery = () => {
                       style={{
                         fontSize: 16,
                         color: '#fff',
-                        fontWeight: 'bold',
+                        fontFamily: 'Poppins-SemiBold',
+                        includeFontPadding: false,
                       }}
                     >
                       ITEMS
@@ -82,7 +97,8 @@ const FastDelivery = () => {
                       style={{
                         fontSize: 18,
                         color: '#fff',
-                        fontWeight: 'bold',
+                        fontFamily: 'Poppins-SemiBold',
+                        includeFontPadding: false,
                       }}
                     >
                       AT {item.itemsAtPrice}
@@ -108,16 +124,36 @@ const FastDelivery = () => {
                 >
                   <FontAwesome name="star" color={'#fff'} size={10} />
                 </View>
-                <Text style={{ fontSize: 12, fontWeight: '500' }}>
+                <Text
+                  style={{
+                    fontSize: 12,
+                    fontFamily: 'Poppins-Medium',
+                    includeFontPadding: false,
+                  }}
+                >
                   {item.rating}
                 </Text>
-                <Text style={{ marginHorizontal: 1 }}>•</Text>
+                <Text style={{ marginHorizontal: 2 }}>•</Text>
 
-                <Text style={{ fontSize: 12, fontWeight: '500' }}>
+                <Text
+                  style={{
+                    fontSize: 12,
+                    fontFamily: 'Poppins-Medium',
+                    includeFontPadding: false,
+                  }}
+                >
                   {item.time} mins
                 </Text>
               </View>
-              <Text style={{ fontSize: 12 }}>{item.category}</Text>
+              <Text
+                style={{
+                  fontSize: 12,
+                  fontFamily: 'Poppins-Regular',
+                  includeFontPadding: false,
+                }}
+              >
+                {item.cuisines}
+              </Text>
             </View>
           );
         }}
@@ -134,7 +170,8 @@ const styles = StyleSheet.create({
   image: { width: 120, height: 140, resizeMode: 'cover' },
   heartIconButton: { position: 'absolute', top: 0, right: 0, padding: 10 },
   name: {
-    fontWeight: 'bold',
+    fontFamily: 'Poppins-SemiBold',
+    includeFontPadding: false,
     width: 120,
     fontSize: 14,
     marginTop: 10,

@@ -4,11 +4,11 @@ import {
   StyleSheet,
   FlatList,
   Image,
-  Dimensions,
   Pressable,
 } from 'react-native';
 import React, { useState } from 'react';
-import { data } from '../data/restaurantListings';
+// import { data } from '../data/restaurantListings';
+import { restaurant } from '../data/restaurants';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import LinearGradient from 'react-native-linear-gradient';
@@ -22,17 +22,14 @@ const RestaurantList = () => {
   return (
     <View style={styles.container}>
       <FlatList
-        data={data}
+        data={restaurant}
         renderItem={({ item }) => {
           return (
             <Pressable
               onPress={() =>
                 navigation.navigate('Menu', {
-                  id: item.id,
-                  name: item.name,
-                  rating: item.rating,
-                  reviewsCount: item.reviewsCount,
-                  location: item.location,
+                  restaurant: item
+                  
                 })
               }
               style={styles.card}
@@ -65,6 +62,41 @@ const RestaurantList = () => {
                   color={'#fff'}
                   style={styles.verticalDots}
                 />
+                <View
+                  style={{
+                    position: 'absolute',
+                    bottom: -2,
+                    right: 0,
+                    height: 30,
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    backgroundColor: '#fff',
+                    paddingHorizontal: 10,
+                    borderTopLeftRadius: 10,
+                  }}
+                >
+                  <Text
+                    style={{
+                      color: '#000',
+                      fontFamily: 'Poppins-SemiBold',
+                      paddingVertical: 0,
+                      includeFontPadding: false,
+                    }}
+                  >
+                    {item.time} MINS
+                  </Text>
+                  <LinearGradient
+                    start={{ x: 0, y: 0 }}
+                    end={{ x: 1, y: 0 }}
+                    style={{
+                      position: 'absolute',
+                      bottom: -5,
+                      width: '100%',
+                      height: 8,
+                    }}
+                    colors={['transparent', 'rgba(0,0,0,0.5)', '#000']}
+                  ></LinearGradient>
+                </View>
               </View>
               <View style={styles.infoContainer}>
                 <Text style={styles.name}>{item.name}</Text>
@@ -83,28 +115,97 @@ const RestaurantList = () => {
                     <FontAwesome name="star" color={'#fff'} size={10} />
                   </View>
                   <Text
-                    style={{ fontSize: 16, color: '#767676', marginRight: 2 }}
+                    style={{
+                      fontSize: 16,
+                      color: '#767676',
+                      marginRight: 2,
+                      fontFamily: 'Poppins-Regular',
+                      includeFontPadding: false,
+                    }}
                   >
                     {item.rating}
                   </Text>
-                  <Text style={{ fontSize: 16, color: '#767676' }}>
-                    ({item.reviewsCount})
+                  <Text
+                    style={{
+                      fontSize: 16,
+                      color: '#767676',
+                      fontFamily: 'Poppins-Regular',
+                      includeFontPadding: false,
+                    }}
+                  >
+                    ({item.ratings})
                   </Text>
                   <Text style={{ marginHorizontal: 2, color: '#767676' }}>
                     •
                   </Text>
                   <Text
-                    style={{ fontSize: 16, color: '#767676', marginRight: 5 }}
+                    style={{
+                      fontSize: 16,
+                      color: '#767676',
+                      marginRight: 5,
+                      fontFamily: 'Poppins-Regular',
+                      includeFontPadding: false,
+                    }}
                   >
                     {item.location},
                   </Text>
-                  <Text style={{ fontSize: 16, color: '#767676' }}>
+                  <Text
+                    style={{
+                      fontSize: 16,
+                      color: '#767676',
+                      fontFamily: 'Poppins-Regular',
+                      includeFontPadding: false,
+                    }}
+                  >
                     {item.distance}
                   </Text>
                 </View>
-                <Text style={{ fontSize: 16, color: '#767676' }}>
-                  {item.category}
-                </Text>
+                <View style={{ flexDirection: 'row', alignItems: 'center' }}>
+                  <Text
+                    style={{
+                      fontSize: 16,
+                      color: '#767676',
+                      fontFamily: 'Poppins-Regular',
+                      includeFontPadding: false,
+                    }}
+                  >
+                    {item.cuisines}
+                  </Text>
+                  <Text style={{ marginHorizontal: 4, color: '#767676' }}>
+                    •
+                  </Text>
+                  <View style={{ flexDirection: 'row', alignItems: 'center' }}>
+                    <Text
+                      style={{
+                        fontSize: 16,
+                        color: '#767676',
+                      }}
+                    >
+                      ₹
+                    </Text>
+                    <Text
+                      style={{
+                        fontFamily: 'Poppins-Regular',
+                        includeFontPadding: false,
+                        fontSize: 16,
+                        color: '#767676',
+                        marginRight:5
+                      }}
+                    >
+                      {item.cost_for_two}
+                    </Text>
+                    <Text
+                      style={{
+                        fontFamily: 'Poppins-Regular',
+                        includeFontPadding: false,
+                        fontSize: 16,
+                        color: '#767676',
+                      }}
+                    >
+                      for two
+                    </Text>
+                  </View>
+                </View>
               </View>
             </Pressable>
           );
@@ -132,7 +233,8 @@ const styles = StyleSheet.create({
   },
   name: {
     fontSize: 20,
-    fontWeight: 'bold',
+    fontFamily: 'Poppins-SemiBold',
+    includeFontPadding: false,
   },
   gradient: {
     position: 'absolute',

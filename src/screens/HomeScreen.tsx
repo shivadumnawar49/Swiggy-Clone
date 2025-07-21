@@ -78,6 +78,7 @@ const styles = StyleSheet.create({
   textInput: {
     color: '#000',
     fontSize: 16,
+    fontFamily:'Poppins-Regular',
     flex: 1,
   },
   searchIcon: {
@@ -85,13 +86,13 @@ const styles = StyleSheet.create({
   },
   fastDeliveryTitle: {
     fontSize: 16,
-    fontWeight: 'bold',
+    fontFamily:'Poppins-SemiBold',
     paddingHorizontal: 10,
     marginBottom: 10,
   },
   foodTypeTitle: {
     fontSize: 16,
-    fontWeight: 'bold',
+    fontFamily:'Poppins-SemiBold',
     paddingHorizontal: 10,
     marginBottom: 10,
   },

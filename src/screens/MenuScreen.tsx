@@ -10,21 +10,24 @@ import {
 import React from 'react';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import FA6 from 'react-native-vector-icons/FontAwesome6';
+import FA5 from 'react-native-vector-icons/FontAwesome5';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import { useNavigation, useRoute } from '@react-navigation/native';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { StackParams } from '../navigation/StackNavigator';
 import { RouteProp } from '@react-navigation/native';
-import MenuItem from '../components/MenuItem';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
+import LinearGradient from 'react-native-linear-gradient';
+import MaterialDesignIcons from '@react-native-vector-icons/material-design-icons';
+import MenuSection from '../components/MenuSection';
 
 type MenuRouteProp = RouteProp<StackParams, 'Menu'>;
 
-const screenHeight = Dimensions.get('window').width;
 const MenuScreen = () => {
   const route = useRoute<MenuRouteProp>();
+  const { restaurant } = route.params;
   console.log('route', route.params);
-  const { id, name, rating, reviewsCount, location } = route.params;
+
   const navigation = useNavigation<NativeStackNavigationProp<StackParams>>();
   return (
     <SafeAreaView style={styles.container}>
@@ -38,53 +41,178 @@ const MenuScreen = () => {
             <Ionicons name="ellipsis-vertical" size={20} color={'#fff'} />
           </View>
           <View style={styles.menuHeader}>
-            <View>
-              <Text style={styles.restaurantName}>{name}</Text>
-              <View style={{ flexDirection: 'row', alignItems: 'center' }}>
-                <Text style={{ fontSize: 16 }}>15-20 mins</Text>
+            <View
+              style={{
+                flexDirection: 'row',
+                alignItems: 'baseline',
+                justifyContent: 'space-between',
+                marginBottom: 14,
+              }}
+            >
+              <View>
+                <Text style={styles.restaurantName}>{restaurant.name}</Text>
+                <View style={{ flexDirection: 'row', alignItems: 'center' }}>
+                  <Text
+                    style={{
+                      fontSize: 16,
+                      fontFamily: 'Poppins-Regular',
+                      includeFontPadding: false,
+                    }}
+                  >
+                    {restaurant.time} mins
+                  </Text>
+                  <View
+                    style={{
+                      width: 1,
+                      height: 12,
+                      backgroundColor: 'grey',
+                      marginHorizontal: 8,
+                    }}
+                  ></View>
+                  <Text
+                    style={{
+                      fontSize: 16,
+                      marginRight: 3,
+                      fontFamily: 'Poppins-Regular',
+                      includeFontPadding: false,
+                    }}
+                  >
+                    {restaurant.location}
+                  </Text>
+                  <Ionicons name="caret-down-sharp" size={16} color={'grey'} />
+                </View>
+              </View>
+              <View>
                 <View
                   style={{
-                    width: 1,
-                    height: 12,
-                    backgroundColor: 'grey',
-                    marginHorizontal: 8,
-                  }}
-                ></View>
-                <Text style={{ fontSize: 16, marginRight: 3 }}>{location}</Text>
-                <Ionicons name="caret-down-sharp" size={16} color={'grey'} />
-              </View>
-            </View>
-
-            <View>
-              <View
-                style={{
-                  flexDirection: 'row',
-                  alignItems: 'center',
-                  backgroundColor: 'green',
-                  alignSelf: 'flex-end',
-                  paddingVertical: 5,
-                  paddingHorizontal: 12,
-                  borderRadius: 999,
-                  marginBottom: 5,
-                }}
-              >
-                <Text
-                  style={{
-                    fontSize: 16,
-                    fontWeight: 'bold',
-                    color: '#fff',
-                    marginRight: 3,
+                    flexDirection: 'row',
+                    alignItems: 'center',
+                    backgroundColor: 'green',
+                    alignSelf: 'flex-end',
+                    paddingVertical: 5,
+                    paddingHorizontal: 12,
+                    borderRadius: 999,
+                    marginBottom: 5,
                   }}
                 >
-                  {rating}
-                </Text>
-                <Ionicons name="star" size={14} color={'#fff'} />
+                  <Text
+                    style={{
+                      fontSize: 16,
+                      fontFamily: 'Poppins-Medium',
+                      includeFontPadding: false,
+                      color: '#fff',
+                      marginRight: 3,
+                    }}
+                  >
+                    {restaurant.rating}
+                  </Text>
+                  <Ionicons name="star" size={14} color={'#fff'} />
+                </View>
+                <View style={{ flexDirection: 'row', alignItems: 'center' }}>
+                  <Text
+                    style={{
+                      fontSize: 12,
+                      marginRight: 5,
+                      fontFamily: 'Poppins-Regular',
+                      includeFontPadding: false,
+                    }}
+                  >
+                    {restaurant.ratings}
+                  </Text>
+                  <Text
+                    style={{
+                      fontSize: 12,
+                      fontFamily: 'Poppins-Regular',
+                      includeFontPadding: false,
+                    }}
+                  >
+                    ratings
+                  </Text>
+                </View>
               </View>
-              <View style={{ flexDirection: 'row', alignItems: 'center' }}>
-                <Text style={{ fontSize: 12, marginRight: 5 }}>
-                  {reviewsCount}
-                </Text>
-                <Text style={{ fontSize: 12 }}>ratings</Text>
+            </View>
+            <LinearGradient
+              start={{ x: 0, y: 0 }}
+              end={{ x: 1, y: 0 }}
+              colors={['grey', 'transparent']}
+              style={{ width: '100%', height: 0.5, marginBottom: 12 }}
+            />
+            <View style={{ flexDirection: 'row' }}>
+              <View
+                style={{
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  alignSelf: 'flex-start',
+                  marginRight: 8,
+                }}
+              >
+                <MaterialDesignIcons
+                  name="octagram"
+                  size={44}
+                  color={'#FF5200'}
+                />
+                <FA5
+                  name="percent"
+                  size={14}
+                  color={'#fff'}
+                  style={{ position: 'absolute' }}
+                />
+              </View>
+              <View>
+                <View style={{ flexDirection: 'row' }}>
+                  <Text
+                    style={{
+                      fontFamily: 'Poppins-SemiBold',
+                      fontSize: 16,
+                      includeFontPadding: false,
+                      marginRight: 5,
+                    }}
+                  >
+                    Flat
+                  </Text>
+                  <Text style={{ fontSize: 16, fontWeight: 500 }}>₹</Text>
+                  <Text
+                    style={{
+                      fontFamily: 'Poppins-SemiBold',
+                      fontSize: 16,
+                      includeFontPadding: false,
+                    }}
+                  >
+                    100 off
+                  </Text>
+                </View>
+                <View style={{ flexDirection: 'row' }}>
+                  <Text
+                    style={{
+                      fontFamily: 'Poppins-Medium',
+                      fontSize: 14,
+                      includeFontPadding: false,
+                      color: 'grey',
+                    }}
+                  >
+                    USE FLATDEAL | ABOVE
+                  </Text>
+                  <Text
+                    style={{
+                      fontSize: 14,
+                      fontWeight: 500,
+                      marginLeft: 5,
+                      color: 'grey',
+                    }}
+                  >
+                    ₹
+                  </Text>
+                  <Text
+                    style={{
+                      fontFamily: 'Poppins-Medium',
+                      fontSize: 14,
+                      includeFontPadding: false,
+                      color: 'grey',
+                    }}
+                  >
+                    349
+                  </Text>
+                </View>
               </View>
             </View>
           </View>
@@ -120,31 +248,22 @@ const MenuScreen = () => {
         {/* horizontal divider */}
         <View style={styles.horizontalDivider} />
 
-        {/* Recommended */}
-        <View style={styles.recommendedContainer}>
-          <View
-            style={{
-              flexDirection: 'row',
-              alignItems: 'center',
-              justifyContent: 'space-between',
-              marginBottom: 25,
-            }}
-          >
-            <Text style={styles.title}>Recommended</Text>
-            <Ionicons name="chevron-down" size={25} />
-          </View>
-          <MenuItem />
-          <MenuItem />
-          <MenuItem />
-          <MenuItem />
-          <MenuItem />
-          <MenuItem />
-          <MenuItem />
-        </View>
+        {restaurant.menu.map((item, index) => (
+          <MenuSection item={item} key={index} />
+        ))}
+
       </ScrollView>
-      <View style={styles.menuButton}>
-        <MaterialIcons name='menu-book' color={'#fff'} size={25}/>
-        <Text style={{fontWeight:500, color:'#fff'}}>Menu</Text>
+      <View style={styles.menuBookIcon}>
+        <MaterialIcons name="menu-book" color={'#fff'} size={22} />
+        <Text
+          style={{
+            fontFamily: 'Poppins-Medium',
+            includeFontPadding: false,
+            color: '#fff',
+          }}
+        >
+          Menu
+        </Text>
       </View>
     </SafeAreaView>
   );
@@ -158,9 +277,10 @@ const styles = StyleSheet.create({
   menuHeaderContainer: {
     backgroundColor: '#000',
     width: '100%',
-    borderBottomLeftRadius: 30,
-    borderBottomRightRadius: 30,
+    borderBottomLeftRadius: 40,
+    borderBottomRightRadius: 40,
     marginBottom: 20,
+    height: 240,
   },
   navbar: {
     flexDirection: 'row',
@@ -171,17 +291,15 @@ const styles = StyleSheet.create({
   menuHeader: {
     backgroundColor: '#fff',
     borderRadius: 20,
-    marginTop: 20,
-    marginHorizontal: 10,
+    marginTop: 10,
+    marginHorizontal: 16,
     padding: 16,
-    flexDirection: 'row',
-    alignItems: 'baseline',
-    justifyContent: 'space-between',
     marginBottom: 20,
   },
   restaurantName: {
     fontSize: 22,
-    fontWeight: 'bold',
+    fontFamily: 'Poppins-SemiBold',
+    includeFontPadding: false,
   },
   searchbarContainer: {
     backgroundColor: '#e6e6e6',
@@ -199,10 +317,12 @@ const styles = StyleSheet.create({
     color: '#000',
     flex: 1,
     marginRight: 8,
+    fontFamily: 'Poppins-Regular',
+    includeFontPadding: false,
   },
   horizontalDivider: {
     marginHorizontal: 10,
-    height: 0.1,
+    height: 1,
     backgroundColor: '#767676',
     marginBottom: 20,
   },
@@ -210,20 +330,21 @@ const styles = StyleSheet.create({
     paddingHorizontal: 10,
   },
   title: {
-    fontSize: 20,
-    fontWeight: 'bold',
+    fontSize: 18,
+    fontFamily: 'Poppins-SemiBold',
+    includeFontPadding: false,
   },
-  menuButton: {
+  menuBookIcon: {
     position: 'absolute',
     bottom: 40,
     right: 20,
     backgroundColor: '#000',
-    elevation:5,
+    elevation: 5,
     width: 80,
     height: 80,
     borderRadius: 999,
-    alignItems:'center',
-    justifyContent:'center'
+    alignItems: 'center',
+    justifyContent: 'center',
   },
 });
 

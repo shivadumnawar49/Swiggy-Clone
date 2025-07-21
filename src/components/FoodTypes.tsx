@@ -26,7 +26,7 @@ const FoodTypes = () => {
 const styles = StyleSheet.create({
   container: { marginHorizontal: 10 , marginBottom:30},
   image: { width: 72, height: 72, borderRadius: 999 },
-  text: { textAlign: 'center', marginTop: 8 },
+  text: { textAlign: 'center', marginTop: 8 , fontFamily:'Poppins-Medium'},
 });
 
 export default FoodTypes;

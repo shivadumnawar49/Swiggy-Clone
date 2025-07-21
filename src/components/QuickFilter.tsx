@@ -8,30 +8,74 @@ const QuickFilter = () => {
     <ScrollView horizontal showsHorizontalScrollIndicator={false}>
       <View style={styles.container}>
         <View style={styles.filterItemContainer}>
-          <Text style={{ marginRight: 8, fontWeight: 500 }}>Filter</Text>
+          <Text
+            style={{
+              marginRight: 8,
+              fontFamily: 'Poppins-Medium',
+              includeFontPadding: false,
+            }}
+          >
+            Filter
+          </Text>
           <MaterialDesignIcons name="tune-variant" size={16} />
         </View>
         <View style={styles.filterItemContainer}>
-          <Text style={{ marginRight: 8, fontWeight: 500 }}>Sort by</Text>
+          <Text
+            style={{
+              marginRight: 8,
+              fontFamily: 'Poppins-Medium',
+              includeFontPadding: false,
+            }}
+          >
+            Sort by
+          </Text>
           <FA5 name="chevron-down" size={14} />
         </View>
         <View style={styles.filterItemContainer}>
-          <Text style={{ fontWeight: 500 }}>Food in 10 mins</Text>
+          <Text
+            style={{ fontFamily: 'Poppins-Medium', includeFontPadding: false }}
+          >
+            Food in 10 mins
+          </Text>
         </View>
         <View style={styles.filterItemContainer}>
-          <Text style={{ fontWeight: 500 }}>Offers</Text>
+          <Text
+            style={{ fontFamily: 'Poppins-Medium', includeFontPadding: false }}
+          >
+            Offers
+          </Text>
         </View>
         <View style={styles.filterItemContainer}>
-          <Text style={{ fontWeight: 500 }}>Ratings 4.0+</Text>
+          <Text
+            style={{ fontFamily: 'Poppins-Medium', includeFontPadding: false }}
+          >
+            Ratings 4.0+
+          </Text>
         </View>
         <View style={styles.filterItemContainer}>
-          <Text style={{ fontWeight: 500 }}>Pure Veg</Text>
+          <Text
+            style={{ fontFamily: 'Poppins-Medium', includeFontPadding: false }}
+          >
+            Pure Veg
+          </Text>
         </View>
         <View style={styles.filterItemContainer}>
-          <Text style={{ fontWeight: 500 }}>Non Veg</Text>
+          <Text
+            style={{ fontFamily: 'Poppins-Medium', includeFontPadding: false }}
+          >
+            Non Veg
+          </Text>
         </View>
         <View style={styles.filterItemContainer}>
-          <Text style={{ marginRight: 8, fontWeight: 500 }}>Cuisines</Text>
+          <Text
+            style={{
+              marginRight: 8,
+              fontFamily: 'Poppins-Medium',
+              includeFontPadding: false,
+            }}
+          >
+            Cuisines
+          </Text>
           <FA5 name="chevron-down" size={14} />
         </View>
       </View>
@@ -44,8 +88,8 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     gap: 10,
-    paddingHorizontal:10, 
-    marginBottom:20
+    paddingHorizontal: 10,
+    marginBottom: 20,
   },
   filterItemContainer: {
     flexDirection: 'row',

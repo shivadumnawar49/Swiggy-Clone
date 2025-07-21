@@ -4,15 +4,12 @@ import React from 'react';
 import HomeScreen from '../screens/HomeScreen';
 import MenuScreen from '../screens/MenuScreen';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
+import { Restaurant } from '../types';
 
 export type StackParams = {
   Home: undefined;
   Menu: {
-    id: string;
-    name: string;
-    rating: string;
-    reviewsCount: string;
-    location: string;
+    restaurant: Restaurant;
   };
 };
 
