@@ -9,7 +9,7 @@ const FoodTypes = () => {
         data={data}
         horizontal
         showsHorizontalScrollIndicator={false}
-        contentContainerStyle={{ gap: 20 }}
+        contentContainerStyle={{ gap: 20, paddingHorizontal:20 }}
         renderItem={({ item }) => {
           return (
             <View>
@@ -24,9 +24,9 @@ const FoodTypes = () => {
 };
 
 const styles = StyleSheet.create({
-  container: { marginHorizontal: 10 , marginBottom:30},
+  container: { marginBottom:30},
   image: { width: 72, height: 72, borderRadius: 999 },
-  text: { textAlign: 'center', marginTop: 8 , fontFamily:'Poppins-Medium'},
+  text: { textAlign: 'center', marginTop: 8 , fontFamily:'Poppins-Medium', includeFontPadding:false,},
 });
 
 export default FoodTypes;

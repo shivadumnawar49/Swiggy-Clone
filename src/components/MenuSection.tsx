@@ -55,7 +55,7 @@ const MenuSection = ({ item }: MenuCategory) => {
           name={
             categorySelected.includes(item.name) ? 'chevron-down' : 'chevron-up'
           }
-          size={25}
+          size={22}
         />
       </Pressable>
       {categorySelected.includes(item.name)

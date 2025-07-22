@@ -72,13 +72,14 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',
-    marginHorizontal: 10,
+    marginHorizontal: 20,
     marginVertical: 30,
   },
   textInput: {
     color: '#000',
     fontSize: 16,
     fontFamily:'Poppins-Regular',
+    includeFontPadding:false,
     flex: 1,
   },
   searchIcon: {
@@ -87,13 +88,15 @@ const styles = StyleSheet.create({
   fastDeliveryTitle: {
     fontSize: 16,
     fontFamily:'Poppins-SemiBold',
-    paddingHorizontal: 10,
+    includeFontPadding:false,
+    paddingHorizontal: 20,
     marginBottom: 10,
   },
   foodTypeTitle: {
     fontSize: 16,
     fontFamily:'Poppins-SemiBold',
-    paddingHorizontal: 10,
+    includeFontPadding:false,
+    paddingHorizontal: 20,
     marginBottom: 10,
   },
 });

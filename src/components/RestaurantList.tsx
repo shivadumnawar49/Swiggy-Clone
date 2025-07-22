@@ -28,8 +28,7 @@ const RestaurantList = () => {
             <Pressable
               onPress={() =>
                 navigation.navigate('Menu', {
-                  restaurant: item
-                  
+                  restaurant: item,
                 })
               }
               style={styles.card}
@@ -40,22 +39,20 @@ const RestaurantList = () => {
                   colors={['rgba(0,0,0,0.5)', 'transparent']}
                   style={styles.gradient}
                 />
-                <Pressable
+
+                <FontAwesome
                   onPress={() =>
                     setLikedItems(prev => ({
                       ...prev,
                       [item.id]: !prev[item.id],
                     }))
                   }
-                  style={styles.heartIconButton}
-                >
-                  <FontAwesome
-                    name={likedItems[item.id] ? 'heart' : 'heart-o'}
-                    size={18}
-                    style={styles.heartIcon}
-                    color={likedItems[item.id] ? 'red' : '#fff'}
-                  />
-                </Pressable>
+                  name={likedItems[item.id] ? 'heart' : 'heart-o'}
+                  size={18}
+                  style={styles.heartIcon}
+                  color={likedItems[item.id] ? 'red' : '#fff'}
+                />
+
                 <Ionicons
                   name="ellipsis-vertical"
                   size={20}
@@ -106,17 +103,17 @@ const RestaurantList = () => {
                       backgroundColor: 'green',
                       alignItems: 'center',
                       justifyContent: 'center',
-                      width: 16,
-                      height: 16,
+                      width: 12,
+                      height: 12,
                       borderRadius: 999,
                       marginRight: 4,
                     }}
                   >
-                    <FontAwesome name="star" color={'#fff'} size={10} />
+                    <FontAwesome name="star" color={'#fff'} size={8} />
                   </View>
                   <Text
                     style={{
-                      fontSize: 16,
+                      fontSize: 14,
                       color: '#767676',
                       marginRight: 2,
                       fontFamily: 'Poppins-Regular',
@@ -127,7 +124,7 @@ const RestaurantList = () => {
                   </Text>
                   <Text
                     style={{
-                      fontSize: 16,
+                      fontSize: 14,
                       color: '#767676',
                       fontFamily: 'Poppins-Regular',
                       includeFontPadding: false,
@@ -140,7 +137,7 @@ const RestaurantList = () => {
                   </Text>
                   <Text
                     style={{
-                      fontSize: 16,
+                      fontSize: 14,
                       color: '#767676',
                       marginRight: 5,
                       fontFamily: 'Poppins-Regular',
@@ -151,7 +148,7 @@ const RestaurantList = () => {
                   </Text>
                   <Text
                     style={{
-                      fontSize: 16,
+                      fontSize: 14,
                       color: '#767676',
                       fontFamily: 'Poppins-Regular',
                       includeFontPadding: false,
@@ -163,7 +160,7 @@ const RestaurantList = () => {
                 <View style={{ flexDirection: 'row', alignItems: 'center' }}>
                   <Text
                     style={{
-                      fontSize: 16,
+                      fontSize: 14,
                       color: '#767676',
                       fontFamily: 'Poppins-Regular',
                       includeFontPadding: false,
@@ -177,7 +174,7 @@ const RestaurantList = () => {
                   <View style={{ flexDirection: 'row', alignItems: 'center' }}>
                     <Text
                       style={{
-                        fontSize: 16,
+                        fontSize: 14,
                         color: '#767676',
                       }}
                     >
@@ -187,9 +184,9 @@ const RestaurantList = () => {
                       style={{
                         fontFamily: 'Poppins-Regular',
                         includeFontPadding: false,
-                        fontSize: 16,
+                        fontSize: 14,
                         color: '#767676',
-                        marginRight:5
+                        marginRight: 5,
                       }}
                     >
                       {item.cost_for_two}
@@ -198,7 +195,7 @@ const RestaurantList = () => {
                       style={{
                         fontFamily: 'Poppins-Regular',
                         includeFontPadding: false,
-                        fontSize: 16,
+                        fontSize: 14,
                         color: '#767676',
                       }}
                     >
@@ -217,12 +214,12 @@ const RestaurantList = () => {
 
 const styles = StyleSheet.create({
   container: {
-    paddingHorizontal: 10,
+    paddingHorizontal: 20,
   },
   card: {
     backgroundColor: '#fff',
-    marginBottom: 15,
-    borderRadius: 12,
+    marginBottom: 20,
+    borderRadius: 16,
     overflow: 'hidden',
     elevation: 4,
   },
@@ -232,7 +229,7 @@ const styles = StyleSheet.create({
     resizeMode: 'cover',
   },
   name: {
-    fontSize: 20,
+    fontSize: 18,
     fontFamily: 'Poppins-SemiBold',
     includeFontPadding: false,
   },
@@ -242,11 +239,7 @@ const styles = StyleSheet.create({
     width: '100%',
     height: '30%',
   },
-  heartIconButton: {
-    position: 'absolute',
-    top: 0,
-    right: 0,
-  },
+
   heartIcon: {
     position: 'absolute',
     top: 0,

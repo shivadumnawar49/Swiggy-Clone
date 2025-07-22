@@ -61,9 +61,9 @@ const ImageCarousel = () => {
 };
 
 const styles = StyleSheet.create({
-  container: { marginHorizontal: 10 },
+  container: { marginHorizontal: 20 },
   card: {
-    width: screenWidth - 20,
+    width: screenWidth - 40,
     height: 200,
     resizeMode: 'cover',
     borderRadius: 8,

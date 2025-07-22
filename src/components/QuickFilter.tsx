@@ -88,7 +88,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     gap: 10,
-    paddingHorizontal: 10,
+    paddingHorizontal: 20,
     marginBottom: 20,
   },
   filterItemContainer: {

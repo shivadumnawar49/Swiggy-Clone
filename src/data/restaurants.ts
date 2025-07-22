@@ -213,7 +213,7 @@ export const restaurant: Restaurant[] = [
             rating: 4.3,
             ratings: 52,
             image:
-              'https://res.cloudinary.com/do0sr9avm/image/upload/v1753008083/znssiufgo1fnq0n7kyi7.jpg',
+              'https://res.cloudinary.com/do0sr9avm/image/upload/v1753133958/dy0sw41pqshbtmgsl74i.jpg',
             veg: false,
             bestSeller: false,
             quantity: 1,
@@ -262,7 +262,7 @@ export const restaurant: Restaurant[] = [
             rating: 4.3,
             ratings: 34,
             image:
-              'https://res.cloudinary.com/do0sr9avm/image/upload/v1753008706/asmztfd1giipmd9v1xo7.png',
+              'https://res.cloudinary.com/do0sr9avm/image/upload/v1753135917/kx4d5wt1xc4nhcd3jx9s.png',
             veg: false,
             bestSeller: true,
             quantity: 1,
@@ -497,7 +497,7 @@ export const restaurant: Restaurant[] = [
             rating: 4.3,
             ratings: 52,
             image:
-              'https://res.cloudinary.com/do0sr9avm/image/upload/v1753008083/znssiufgo1fnq0n7kyi7.jpg',
+              'https://res.cloudinary.com/do0sr9avm/image/upload/v1753133958/dy0sw41pqshbtmgsl74i.jpg',
             veg: false,
             bestSeller: false,
             quantity: 1,
@@ -546,7 +546,7 @@ export const restaurant: Restaurant[] = [
             rating: 4.3,
             ratings: 34,
             image:
-              'https://res.cloudinary.com/do0sr9avm/image/upload/v1753008706/asmztfd1giipmd9v1xo7.png',
+              'https://res.cloudinary.com/do0sr9avm/image/upload/v1753135917/kx4d5wt1xc4nhcd3jx9s.png',
             veg: false,
             bestSeller: true,
             quantity: 1,
@@ -781,7 +781,7 @@ export const restaurant: Restaurant[] = [
             rating: 4.3,
             ratings: 52,
             image:
-              'https://res.cloudinary.com/do0sr9avm/image/upload/v1753008083/znssiufgo1fnq0n7kyi7.jpg',
+              'https://res.cloudinary.com/do0sr9avm/image/upload/v1753133958/dy0sw41pqshbtmgsl74i.jpg',
             veg: false,
             bestSeller: false,
             quantity: 1,
@@ -830,7 +830,7 @@ export const restaurant: Restaurant[] = [
             rating: 4.3,
             ratings: 34,
             image:
-              'https://res.cloudinary.com/do0sr9avm/image/upload/v1753008706/asmztfd1giipmd9v1xo7.png',
+              'https://res.cloudinary.com/do0sr9avm/image/upload/v1753135917/kx4d5wt1xc4nhcd3jx9s.png',
             veg: false,
             bestSeller: true,
             quantity: 1,
@@ -1065,7 +1065,7 @@ export const restaurant: Restaurant[] = [
             rating: 4.3,
             ratings: 52,
             image:
-              'https://res.cloudinary.com/do0sr9avm/image/upload/v1753008083/znssiufgo1fnq0n7kyi7.jpg',
+              'https://res.cloudinary.com/do0sr9avm/image/upload/v1753133958/dy0sw41pqshbtmgsl74i.jpg',
             veg: false,
             bestSeller: false,
             quantity: 1,
@@ -1114,7 +1114,7 @@ export const restaurant: Restaurant[] = [
             rating: 4.3,
             ratings: 34,
             image:
-              'https://res.cloudinary.com/do0sr9avm/image/upload/v1753008706/asmztfd1giipmd9v1xo7.png',
+              'https://res.cloudinary.com/do0sr9avm/image/upload/v1753135917/kx4d5wt1xc4nhcd3jx9s.png',
             veg: false,
             bestSeller: true,
             quantity: 1,

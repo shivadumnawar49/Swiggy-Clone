@@ -20,7 +20,7 @@ const FastDelivery = () => {
         data={data}
         horizontal
         showsHorizontalScrollIndicator={false}
-        contentContainerStyle={{ gap: 14 }}
+        contentContainerStyle={{ gap: 14, paddingHorizontal: 20 }}
         renderItem={({ item }) => {
           return (
             <View>
@@ -164,7 +164,6 @@ const FastDelivery = () => {
 
 const styles = StyleSheet.create({
   container: {
-    paddingHorizontal: 10,
     marginBottom: 30,
   },
   image: { width: 120, height: 140, resizeMode: 'cover' },
