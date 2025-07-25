@@ -5,11 +5,15 @@ import HomeScreen from '../screens/HomeScreen';
 import MenuScreen from '../screens/MenuScreen';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 import { Restaurant } from '../types';
+import CartScreen from '../screens/CartScreen';
 
 export type StackParams = {
   Home: undefined;
   Menu: {
     restaurant: Restaurant;
+  };
+  Cart: {
+    restaurantName: string;
   };
 };
 
@@ -22,6 +26,7 @@ const StackNavigator = () => {
         <Stack.Navigator screenOptions={{ headerShown: false }}>
           <Stack.Screen name="Home" component={HomeScreen} />
           <Stack.Screen name="Menu" component={MenuScreen} />
+          <Stack.Screen name="Cart" component={CartScreen} />
         </Stack.Navigator>
       </NavigationContainer>
     </SafeAreaProvider>

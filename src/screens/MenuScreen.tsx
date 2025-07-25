@@ -23,11 +23,15 @@ import { Modal, Portal, PaperProvider } from 'react-native-paper';
 import { useSelector } from 'react-redux';
 import { RootState } from '../redux/store';
 
+type MenuNavigationProp = NativeStackNavigationProp<StackParams, 'Menu'>;
 type MenuRouteProp = RouteProp<StackParams, 'Menu'>;
 
 const MenuScreen = () => {
   const cartItems = useSelector((state: RootState) => state.cart.items);
   console.log('cartItems:', cartItems);
+  const totalQuantity = cartItems
+    .map(item => item.quantity)
+    .reduce((curr, prev) => curr + prev, 0);
   const route = useRoute<MenuRouteProp>();
   const { restaurant } = route.params;
   console.log('route', route.params);
@@ -37,7 +41,7 @@ const MenuScreen = () => {
   const showModal = () => setModalVisible(true);
   const hideModal = () => setModalVisible(false);
 
-  const navigation = useNavigation<NativeStackNavigationProp<StackParams>>();
+  const navigation = useNavigation<MenuNavigationProp>();
   return (
     <PaperProvider>
       <SafeAreaView style={styles.container}>
@@ -341,7 +345,13 @@ const MenuScreen = () => {
             ))}
           </Modal>
         </Portal>
-        <Pressable onPress={showModal} style={styles.menuBookIcon}>
+        <Pressable
+          onPress={showModal}
+          style={[
+            styles.menuBookIcon,
+            { bottom: totalQuantity > 0 ? 100 : 40 },
+          ]}
+        >
           <MaterialIcons name="menu-book" color={'#fff'} size={22} />
           <Text
             style={{
@@ -353,46 +363,66 @@ const MenuScreen = () => {
             Menu
           </Text>
         </Pressable>
-        <Pressable
-          style={{
-            position: 'absolute',
-            bottom: 25,
-            backgroundColor: '#1ba672',
-            height: 60,
-            width: '90%',
-            elevation: 5,
-            alignSelf: 'center',
-            borderRadius: 20,
-            flexDirection: 'row',
-            alignItems: 'center',
-            justifyContent: 'space-between',
-            paddingHorizontal: 16,
-          }}
-        >
-          <Text
+        {totalQuantity > 0 ? (
+          <Pressable
+            onPress={() =>
+              navigation.navigate('Cart', {
+                restaurantName: route.params.restaurant.name,
+              })
+            }
             style={{
-              fontFamily: 'Poppins-SemiBold',
-              fontSize: 16,
-              color: '#fff',
-              includeFontPadding: false,
+              position: 'absolute',
+              bottom: 25,
+              backgroundColor: '#1ba672',
+              height: 60,
+              width: '90%',
+              elevation: 5,
+              alignSelf: 'center',
+              borderRadius: 16,
+              flexDirection: 'row',
+              alignItems: 'center',
+              justifyContent: 'space-between',
+              paddingHorizontal: 16,
             }}
           >
-            {cartItems.length} Items added
-          </Text>
-          <View style={{ flexDirection: 'row', alignItems: 'center' }}>
-            <Text
-              style={{
-                fontFamily: 'Poppins-SemiBold',
-                fontSize: 16,
-                color: '#fff',
-                includeFontPadding: false,
-              }}
-            >
-              View Cart
-            </Text>
-            <Ionicons name="chevron-forward" size={20} color={'#fff'} />
-          </View>
-        </Pressable>
+            <View style={{ flexDirection: 'row', alignItems: 'center' }}>
+              <Text
+                style={{
+                  fontFamily: 'Poppins-SemiBold',
+                  fontSize: 16,
+                  color: '#fff',
+                  includeFontPadding: false,
+                  marginRight: 4,
+                }}
+              >
+                {totalQuantity}
+              </Text>
+              <Text
+                style={{
+                  fontFamily: 'Poppins-SemiBold',
+                  fontSize: 16,
+                  color: '#fff',
+                  includeFontPadding: false,
+                }}
+              >
+                {totalQuantity > 1 ? 'Items' : 'Item'} added
+              </Text>
+            </View>
+            <View style={{ flexDirection: 'row', alignItems: 'center' }}>
+              <Text
+                style={{
+                  fontFamily: 'Poppins-SemiBold',
+                  fontSize: 16,
+                  color: '#fff',
+                  includeFontPadding: false,
+                }}
+              >
+                View Cart
+              </Text>
+              <Ionicons name="chevron-forward" size={20} color={'#fff'} />
+            </View>
+          </Pressable>
+        ) : null}
       </SafeAreaView>
     </PaperProvider>
   );
@@ -465,7 +495,6 @@ const styles = StyleSheet.create({
   },
   menuBookIcon: {
     position: 'absolute',
-    bottom: 80,
     right: 20,
     backgroundColor: '#000',
     elevation: 5,
