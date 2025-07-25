@@ -1,8 +1,16 @@
-import { View, Text, StyleSheet, Image } from 'react-native';
-import React from 'react';
+import { View, Text, StyleSheet, Image, Pressable } from 'react-native';
+import React, { useState } from 'react';
 import Ionicons from 'react-native-vector-icons/Ionicons';
+import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import LinearGradient from 'react-native-linear-gradient';
 import MaterialDesignIcons from '@react-native-vector-icons/material-design-icons';
+import { useDispatch } from 'react-redux';
+import {
+  addToCart,
+  decreaseQuantity,
+  increaseQuantity,
+  removeFromCart,
+} from '../redux/cartSlice';
 
 interface MenuItem {
   item: {
@@ -20,6 +28,34 @@ interface MenuItem {
 }
 
 const FoodItem = ({ item }: MenuItem) => {
+  const dispatch = useDispatch();
+  const [addItems, setAddItems] = useState(0);
+  const [selected, setSelected] = useState(false);
+
+  const handleAdd = () => {
+    if (addItems === 0) {
+      setSelected(true);
+      setAddItems(1);
+    }
+    dispatch(addToCart(item));
+  };
+
+  const handleDecrease = () => {
+    if (addItems <= 1) {
+      dispatch(removeFromCart(item.id));
+      setSelected(false);
+      setAddItems(0);
+    } else {
+      setAddItems(prev => prev - 1);
+      dispatch(decreaseQuantity(item.id));
+    }
+  };
+
+  const handleIncrease = () => {
+    setAddItems(prev => prev + 1);
+    dispatch(increaseQuantity(item.id));
+  };
+
   return (
     <View style={styles.container}>
       <View style={styles.info}>
@@ -125,34 +161,73 @@ const FoodItem = ({ item }: MenuItem) => {
             borderRadius: 20,
           }}
         />
-        <View
-          style={{
-            position: 'absolute',
-            bottom: -20,
-            left: '50%',
-            transform: [{ translateX: -60 }],
-            width: 120,
-            height: 40,
-            borderRadius: 10,
-            elevation: 5,
-            borderWidth: 0.5,
-            borderColor: '#a7a7a7ff',
-            backgroundColor: '#fff',
-            alignItems: 'center',
-            justifyContent: 'center',
-          }}
-        >
-          <Text
+        {selected ? (
+          <Pressable
             style={{
-              fontSize: 18,
-              fontFamily: 'Poppins-SemiBold',
-              includeFontPadding: false,
-              color: 'green',
+              position: 'absolute',
+              bottom: -20,
+              left: '50%',
+              transform: [{ translateX: -60 }],
+              width: 120,
+              height: 40,
+              borderRadius: 10,
+              elevation: 5,
+              borderWidth: 0.5,
+              borderColor: '#a7a7a7ff',
+              backgroundColor: '#fff',
+              flexDirection: 'row',
+              alignItems: 'center',
+              justifyContent: 'space-around',
             }}
           >
-            ADD
-          </Text>
-        </View>
+            <Pressable onPress={() => handleDecrease()} style={{  padding: 8 }}>
+              <FontAwesome name="minus" size={16} color={'#1ba672'} />
+            </Pressable>
+            <Text
+              style={{
+                fontFamily: 'Poppins-SemiBold',
+                includeFontPadding: false,
+                fontSize: 16,
+                color: '#1ba672',
+              }}
+            >
+              {addItems}
+            </Text>
+            <Pressable onPress={() => handleIncrease()} style={{ padding: 8 }}>
+              <FontAwesome name="plus" size={16} color={'#1ba672'} />
+            </Pressable>
+          </Pressable>
+        ) : (
+          <Pressable
+            onPress={() => handleAdd()}
+            style={{
+              position: 'absolute',
+              bottom: -20,
+              left: '50%',
+              transform: [{ translateX: -60 }],
+              width: 120,
+              height: 40,
+              borderRadius: 10,
+              elevation: 5,
+              borderWidth: 0.5,
+              borderColor: '#a7a7a7ff',
+              backgroundColor: '#fff',
+              alignItems: 'center',
+              justifyContent: 'center',
+            }}
+          >
+            <Text
+              style={{
+                fontSize: 18,
+                fontFamily: 'Poppins-SemiBold',
+                includeFontPadding: false,
+                color: '#1ba672',
+              }}
+            >
+              ADD
+            </Text>
+          </Pressable>
+        )}
       </View>
     </View>
   );

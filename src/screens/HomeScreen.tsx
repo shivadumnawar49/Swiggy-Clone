@@ -77,7 +77,7 @@ const styles = StyleSheet.create({
   },
   textInput: {
     color: '#000',
-    fontSize: 16,
+    fontSize: 14,
     fontFamily:'Poppins-Regular',
     includeFontPadding:false,
     flex: 1,

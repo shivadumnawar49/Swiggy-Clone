@@ -5,7 +5,6 @@ import {
   Pressable,
   TextInput,
   ScrollView,
-  Dimensions,
 } from 'react-native';
 import React, { useState } from 'react';
 import { SafeAreaView } from 'react-native-safe-area-context';
@@ -21,10 +20,14 @@ import LinearGradient from 'react-native-linear-gradient';
 import MaterialDesignIcons from '@react-native-vector-icons/material-design-icons';
 import MenuSection from '../components/MenuSection';
 import { Modal, Portal, PaperProvider } from 'react-native-paper';
+import { useSelector } from 'react-redux';
+import { RootState } from '../redux/store';
 
 type MenuRouteProp = RouteProp<StackParams, 'Menu'>;
 
 const MenuScreen = () => {
+  const cartItems = useSelector((state: RootState) => state.cart.items);
+  console.log('cartItems:', cartItems);
   const route = useRoute<MenuRouteProp>();
   const { restaurant } = route.params;
   console.log('route', route.params);
@@ -304,13 +307,14 @@ const MenuScreen = () => {
             }}
           >
             {restaurant.menu.map((item, index) => (
-              <View key={index}
+              <View
+                key={index}
                 style={{
                   flexDirection: 'row',
                   alignItems: 'center',
                   justifyContent: 'space-between',
-                  paddingHorizontal:20,
-                  marginBottom:16
+                  paddingHorizontal: 20,
+                  marginBottom: 16,
                 }}
               >
                 <Text
@@ -348,6 +352,46 @@ const MenuScreen = () => {
           >
             Menu
           </Text>
+        </Pressable>
+        <Pressable
+          style={{
+            position: 'absolute',
+            bottom: 25,
+            backgroundColor: '#1ba672',
+            height: 60,
+            width: '90%',
+            elevation: 5,
+            alignSelf: 'center',
+            borderRadius: 20,
+            flexDirection: 'row',
+            alignItems: 'center',
+            justifyContent: 'space-between',
+            paddingHorizontal: 16,
+          }}
+        >
+          <Text
+            style={{
+              fontFamily: 'Poppins-SemiBold',
+              fontSize: 16,
+              color: '#fff',
+              includeFontPadding: false,
+            }}
+          >
+            {cartItems.length} Items added
+          </Text>
+          <View style={{ flexDirection: 'row', alignItems: 'center' }}>
+            <Text
+              style={{
+                fontFamily: 'Poppins-SemiBold',
+                fontSize: 16,
+                color: '#fff',
+                includeFontPadding: false,
+              }}
+            >
+              View Cart
+            </Text>
+            <Ionicons name="chevron-forward" size={20} color={'#fff'} />
+          </View>
         </Pressable>
       </SafeAreaView>
     </PaperProvider>
@@ -398,7 +442,7 @@ const styles = StyleSheet.create({
     marginBottom: 20,
   },
   searchbarTextInput: {
-    fontSize: 16,
+    fontSize: 14,
     color: '#000',
     flex: 1,
     marginRight: 8,
@@ -421,7 +465,7 @@ const styles = StyleSheet.create({
   },
   menuBookIcon: {
     position: 'absolute',
-    bottom: 40,
+    bottom: 80,
     right: 20,
     backgroundColor: '#000',
     elevation: 5,
