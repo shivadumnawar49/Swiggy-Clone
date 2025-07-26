@@ -28,15 +28,40 @@ const HomeScreen = () => {
   }, []);
   return (
     <SafeAreaView style={styles.container}>
-      <ScrollView contentContainerStyle={{paddingBottom:30}}>
+      <ScrollView contentContainerStyle={{ paddingBottom: 30 }}>
         {/* SearchBar */}
-        <View style={styles.searchbar}>
+        {/* <View style={styles.searchbar}>
           <TextInput
             placeholder={`Search for '${placeholders[placeholderIndex]}'`}
             placeholderTextColor={'grey'}
             style={styles.textInput}
           />
           <Ionicons name="search" size={25} style={styles.searchIcon} />
+        </View> */}
+        <View style={styles.searchbarContainer}>
+          <TextInput
+            placeholder={`Search for '${placeholders[placeholderIndex]}'`}
+            placeholderTextColor={'grey'}
+            style={styles.searchbarTextInput}
+          />
+          <View
+            style={{
+              flexDirection: 'row',
+              alignItems: 'center',
+              height: '100%',
+            }}
+          >
+            <Ionicons name="search" size={22} color={'grey'} />
+            <View
+              style={{
+                width: 1,
+                backgroundColor: 'grey',
+                height: '60%',
+                marginHorizontal: 12,
+              }}
+            ></View>
+            <Ionicons name="mic" size={22} color={'#FF5200'} />
+          </View>
         </View>
 
         {/* Image Carousel */}
@@ -54,9 +79,11 @@ const HomeScreen = () => {
         <QuickFilter />
 
         {/* Restaurants to explore */}
-        <Text style={styles.foodTypeTitle}>Top 2036 restaurants to explore</Text>
+        <Text style={styles.foodTypeTitle}>
+          Top 2036 restaurants to explore
+        </Text>
 
-        <RestaurantList/>
+        <RestaurantList />
       </ScrollView>
     </SafeAreaView>
   );
@@ -64,38 +91,39 @@ const HomeScreen = () => {
 
 const styles = StyleSheet.create({
   container: { flex: 1, backgroundColor: '#fff' },
-  searchbar: {
+  searchbarContainer: {
+    backgroundColor: '#fff',
     height: 48,
-    borderWidth: 0.5,
-    borderRadius: 8,
     paddingHorizontal: 10,
+    borderWidth:0.5,
+    borderColor:'#000',
+    borderRadius: 10,
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',
     marginHorizontal: 20,
-    marginVertical: 30,
+    marginTop: 20,
+    marginBottom: 30,
   },
-  textInput: {
-    color: '#000',
+  searchbarTextInput: {
     fontSize: 14,
-    fontFamily:'Poppins-Regular',
-    includeFontPadding:false,
+    color: '#000',
     flex: 1,
-  },
-  searchIcon: {
-    marginLeft: 10,
+    marginRight: 8,
+    fontFamily: 'Poppins-Regular',
+    includeFontPadding: false,
   },
   fastDeliveryTitle: {
     fontSize: 16,
-    fontFamily:'Poppins-SemiBold',
-    includeFontPadding:false,
+    fontFamily: 'Poppins-SemiBold',
+    includeFontPadding: false,
     paddingHorizontal: 20,
     marginBottom: 10,
   },
   foodTypeTitle: {
     fontSize: 16,
-    fontFamily:'Poppins-SemiBold',
-    includeFontPadding:false,
+    fontFamily: 'Poppins-SemiBold',
+    includeFontPadding: false,
     paddingHorizontal: 20,
     marginBottom: 10,
   },

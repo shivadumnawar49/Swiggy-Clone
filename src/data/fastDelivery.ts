@@ -13,7 +13,7 @@ export const data = [
     id: '1',
     image:
       'https://res.cloudinary.com/do0sr9avm/image/upload/v1752611172/gaelwgxe8mnnmknhtmrw.jpg',
-    name: "Burger Adda",
+    name: 'Burger Adda',
     rating: '4.4',
     time: '15-20',
     cuisines: 'American',
@@ -22,7 +22,7 @@ export const data = [
     id: '2',
     image:
       'https://res.cloudinary.com/do0sr9avm/image/upload/v1752611172/d3b5xdrdczzl9iknlowq.jpg',
-    name: "TruffleSlice Co.",
+    name: 'Pizza Street Food',
     rating: '4.2',
     time: '20-25',
     itemsAtPrice: '₹159',

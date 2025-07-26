@@ -51,7 +51,11 @@ const ImageCarousel = () => {
             key={index}
             style={[
               styles.dot,
-              { backgroundColor: activeIndex === index ? 'red' : '#C0C0C0' },
+              {
+                backgroundColor: activeIndex === index ? 'red' : '#C0C0C0',
+                width: activeIndex === index ? 8 : 6,
+                height: activeIndex === index ? 8 : 6,
+              },
             ]}
           ></View>
         ))}
@@ -74,8 +78,6 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   dot: {
-    width: 8,
-    height: 8,
     borderRadius: 999,
     marginTop: 14,
     margin: 5,

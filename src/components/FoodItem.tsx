@@ -1,16 +1,16 @@
 import { View, Text, StyleSheet, Image, Pressable } from 'react-native';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import LinearGradient from 'react-native-linear-gradient';
 import MaterialDesignIcons from '@react-native-vector-icons/material-design-icons';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import {
   addToCart,
   decreaseQuantity,
-  increaseQuantity,
   removeFromCart,
 } from '../redux/cartSlice';
+import { RootState } from '../redux/store';
 
 interface MenuItem {
   item: {
@@ -29,31 +29,26 @@ interface MenuItem {
 
 const FoodItem = ({ item }: MenuItem) => {
   const dispatch = useDispatch();
-  const [addItems, setAddItems] = useState(0);
-  const [selected, setSelected] = useState(false);
+
+  const cartItem = useSelector((state: RootState) =>
+    state.cart.items.find(i => i.id === item.id),
+  );
+  const quantity = cartItem ? cartItem.quantity : 0;
 
   const handleAdd = () => {
-    if (addItems === 0) {
-      setSelected(true);
-      setAddItems(1);
-    }
+    dispatch(addToCart(item));
+  };
+
+  const handleIncrease = () => {
     dispatch(addToCart(item));
   };
 
   const handleDecrease = () => {
-    if (addItems <= 1) {
+    if (quantity === 1) {
       dispatch(removeFromCart(item.id));
-      setSelected(false);
-      setAddItems(0);
     } else {
-      setAddItems(prev => prev - 1);
       dispatch(decreaseQuantity(item.id));
     }
-  };
-
-  const handleIncrease = () => {
-    setAddItems(prev => prev + 1);
-    dispatch(increaseQuantity(item.id));
   };
 
   return (
@@ -161,7 +156,7 @@ const FoodItem = ({ item }: MenuItem) => {
             borderRadius: 20,
           }}
         />
-        {selected ? (
+        {quantity > 0 ? (
           <Pressable
             style={{
               position: 'absolute',
@@ -180,7 +175,7 @@ const FoodItem = ({ item }: MenuItem) => {
               justifyContent: 'space-around',
             }}
           >
-            <Pressable onPress={() => handleDecrease()} style={{  padding: 8 }}>
+            <Pressable onPress={() => handleDecrease()} style={{ padding: 8 }}>
               <FontAwesome name="minus" size={16} color={'#1ba672'} />
             </Pressable>
             <Text
@@ -191,7 +186,7 @@ const FoodItem = ({ item }: MenuItem) => {
                 color: '#1ba672',
               }}
             >
-              {addItems}
+              {quantity}
             </Text>
             <Pressable onPress={() => handleIncrease()} style={{ padding: 8 }}>
               <FontAwesome name="plus" size={16} color={'#1ba672'} />

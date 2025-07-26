@@ -6,6 +6,7 @@ import MenuScreen from '../screens/MenuScreen';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 import { Restaurant } from '../types';
 import CartScreen from '../screens/CartScreen';
+import OrderConfirmationScreen from '../screens/OrderConfirmationScreen';
 
 export type StackParams = {
   Home: undefined;
@@ -15,6 +16,7 @@ export type StackParams = {
   Cart: {
     restaurantName: string;
   };
+  OrderConfirmation: undefined;
 };
 
 const Stack = createNativeStackNavigator();
@@ -27,6 +29,10 @@ const StackNavigator = () => {
           <Stack.Screen name="Home" component={HomeScreen} />
           <Stack.Screen name="Menu" component={MenuScreen} />
           <Stack.Screen name="Cart" component={CartScreen} />
+          <Stack.Screen
+            name="OrderConfirmation"
+            component={OrderConfirmationScreen}
+          />
         </Stack.Navigator>
       </NavigationContainer>
     </SafeAreaProvider>

@@ -5,6 +5,7 @@ type CartItem = {
   name: string;
   price: number;
   quantity: number;
+  veg: boolean;
 };
 
 type CartState = {
@@ -32,12 +33,6 @@ const cartSlice = createSlice({
     removeFromCart(state, action: PayloadAction<string>) {
       state.items = state.items.filter(item => item.id !== action.payload);
     },
-    increaseQuantity(state, action: PayloadAction<string>) {
-      const item = state.items.find(item => item.id === action.payload);
-      if (item) {
-        item.quantity += 1;
-      }
-    },
     decreaseQuantity(state, action: PayloadAction<string>) {
       const item = state.items.find(item => item.id === action.payload);
       if (item && item.quantity > 1) {
@@ -46,9 +41,12 @@ const cartSlice = createSlice({
         state.items = state.items.filter(item => item.id !== action.payload);
       }
     },
+    clearCart(state) {
+      state.items = [];
+    },
   },
 });
 
-export const { addToCart, removeFromCart, increaseQuantity, decreaseQuantity } =
+export const { addToCart, removeFromCart, decreaseQuantity, clearCart } =
   cartSlice.actions;
 export default cartSlice.reducer;
