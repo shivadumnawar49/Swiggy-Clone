@@ -445,13 +445,14 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',
-    padding: 10,
+    paddingHorizontal: 20,
+    paddingVertical:10
   },
   menuHeader: {
     backgroundColor: '#fff',
     borderRadius: 20,
     marginTop: 10,
-    marginHorizontal: 16,
+    marginHorizontal: 20,
     padding: 16,
     marginBottom: 20,
   },
@@ -463,7 +464,7 @@ const styles = StyleSheet.create({
   searchbarContainer: {
     backgroundColor: '#e6e6e6',
     height: 48,
-    marginHorizontal: 10,
+    marginHorizontal: 20,
     borderRadius: 12,
     flexDirection: 'row',
     alignItems: 'center',
@@ -480,7 +481,7 @@ const styles = StyleSheet.create({
     includeFontPadding: false,
   },
   horizontalDivider: {
-    marginHorizontal: 10,
+    marginHorizontal: 20,
     height: 1,
     backgroundColor: '#767676',
     marginBottom: 20,

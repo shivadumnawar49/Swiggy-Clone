@@ -29,15 +29,6 @@ const HomeScreen = () => {
   return (
     <SafeAreaView style={styles.container}>
       <ScrollView contentContainerStyle={{ paddingBottom: 30 }}>
-        {/* SearchBar */}
-        {/* <View style={styles.searchbar}>
-          <TextInput
-            placeholder={`Search for '${placeholders[placeholderIndex]}'`}
-            placeholderTextColor={'grey'}
-            style={styles.textInput}
-          />
-          <Ionicons name="search" size={25} style={styles.searchIcon} />
-        </View> */}
         <View style={styles.searchbarContainer}>
           <TextInput
             placeholder={`Search for '${placeholders[placeholderIndex]}'`}
@@ -95,8 +86,8 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
     height: 48,
     paddingHorizontal: 10,
-    borderWidth:0.5,
-    borderColor:'#000',
+    borderWidth: 0.5,
+    borderColor: '#000',
     borderRadius: 10,
     flexDirection: 'row',
     alignItems: 'center',

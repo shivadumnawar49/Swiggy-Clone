@@ -44,7 +44,7 @@ const MenuSection = ({ item }: MenuCategory) => {
           flexDirection: 'row',
           alignItems: 'center',
           justifyContent: 'space-between',
-          paddingHorizontal: 10,
+          paddingHorizontal: 20,
           marginBottom: 20,
         }}
       >

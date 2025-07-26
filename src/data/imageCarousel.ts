@@ -1,9 +1,9 @@
 export const images = [
-  'https://res.cloudinary.com/do0sr9avm/image/upload/v1753544064/ojwn5721dm3vtgv4bwmz.png',
-  'https://res.cloudinary.com/do0sr9avm/image/upload/v1753544063/iznwvqfiizckagp8xknn.png',
-  'https://res.cloudinary.com/do0sr9avm/image/upload/v1753546225/p7cvolmh6ykadikd4czw.jpg',
-  'https://res.cloudinary.com/do0sr9avm/image/upload/v1753546183/xz7ntpi76wuarasbpub5.jpg',
-  'https://res.cloudinary.com/do0sr9avm/image/upload/v1753546543/cwxjjoq9z4v3shu2y6ly.png',
-  'https://carousels-ads.swiggy.com/images/slider/6.jpg',
-  'https://carousels-ads.swiggy.com/images/slider/7.jpg',
+  'https://res.cloudinary.com/do0sr9avm/image/upload/v1753556389/gqsl2khp1xciqxjqnlfo.jpg',
+  'https://res.cloudinary.com/do0sr9avm/image/upload/v1752681793/d7plhdqavwnnij0gk6wd.jpg',
+  'https://res.cloudinary.com/do0sr9avm/image/upload/v1752611172/s6egkgb22pxec6tb5g9k.jpg',
+  'https://res.cloudinary.com/do0sr9avm/image/upload/v1752529111/aeeaiaes412mzupq3vjf.jpg',
+  'https://res.cloudinary.com/do0sr9avm/image/upload/v1752605082/vxhkmcjdzg7liaxdjttb.jpg',
+  'https://res.cloudinary.com/do0sr9avm/image/upload/v1753556407/qn73bp2nkf43pvf9zopw.jpg',
+  'https://res.cloudinary.com/do0sr9avm/image/upload/v1752605081/iviydfbtigbixmfxzlaa.jpg',
 ];

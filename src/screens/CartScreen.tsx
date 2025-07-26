@@ -5,6 +5,7 @@ import {
   Pressable,
   Image,
   ScrollView,
+  StatusBar,
 } from 'react-native';
 import React, { useEffect, useState } from 'react';
 import { SafeAreaView } from 'react-native-safe-area-context';
@@ -127,7 +128,7 @@ const CartScreen = () => {
           </View>
           <ScrollView
             showsVerticalScrollIndicator={false}
-            contentContainerStyle={{ paddingBottom: 200, marginTop: 20 }}
+            contentContainerStyle={{ paddingBottom: 150, marginTop: 20 }}
           >
             <View
               style={{
@@ -564,16 +565,17 @@ const CartScreen = () => {
             style={{
               position: 'absolute',
               bottom: 0,
-              height: '10%',
+              height: '12%',
               width: '100%',
               backgroundColor: '#fff',
               paddingHorizontal: 20,
               flexDirection: 'row',
               justifyContent: 'space-between',
+              paddingBottom:10,
               alignItems: 'center',
             }}
           >
-            <View style={{}}>
+            <View>
               <View style={{ flexDirection: 'row', alignItems: 'center' }}>
                 <Text style={{ fontWeight: 'bold', fontSize: 16 }}>₹</Text>
                 <Text
@@ -632,8 +634,24 @@ const CartScreen = () => {
           >
             <FA6 name="arrow-left" color={'grey'} size={22} />
           </Pressable>
-          <View style={{ alignItems: 'center', justifyContent: 'center', flex:1, width:'70%', alignSelf:'center' }}>
-            <Text style={{textAlign:'center', fontFamily:'Poppins-Medium', includeFontPadding:false}}>Your cart is empty. Add something from the menu.</Text>
+          <View
+            style={{
+              alignItems: 'center',
+              justifyContent: 'center',
+              flex: 1,
+              width: '70%',
+              alignSelf: 'center',
+            }}
+          >
+            <Text
+              style={{
+                textAlign: 'center',
+                fontFamily: 'Poppins-Medium',
+                includeFontPadding: false,
+              }}
+            >
+              Your cart is empty. Add something from the menu.
+            </Text>
             <Pressable
               onPress={() => navigation.replace('Home')}
               style={{
@@ -667,7 +685,7 @@ const CartScreen = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
+    backgroundColor: '#F1F0F5',
   },
 });
 
