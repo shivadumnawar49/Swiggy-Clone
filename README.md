@@ -23,4 +23,4 @@ Redux for state management of the cart.
 I also used royalty-free images for banners, icons and food images from freepik, vecteezy, unsplash, pixabay and designed them. Then, I stored images in cloudinary website (free) to get urls for the images. 
 Thanks to these websites. 
 
-Watch the demo on my Youtube channel: https://youtu.be/u1IRuHhsp0U?si=oMn8A83jB-Q4aZ8g
+Watch the demo on my Youtube channel: https://youtu.be/k4xPjNhSeO4?si=l3-aHoNWjQiQIfYo
